@@ -13,13 +13,14 @@ namespace Actividad3LengPro3.Controllers
             private static List<EstudiantesViewModel> estudiantes = new List<EstudiantesViewModel>();
 
         // GET: Estudiantes
-        public ActionResult Registrar()
+        [HttpGet]
+        public IActionResult Registrar()
         {
-            return View(new EstudiantesViewModel());
+            return View();
         }
 
         [HttpPost]
-        public ActionResult Registrar(EstudiantesViewModel estudiante)
+        public IActionResult Registrar(EstudiantesViewModel model)
         {
             if (estudiante.EstaBecado == false)
             {
@@ -28,11 +29,10 @@ namespace Actividad3LengPro3.Controllers
 
             if (ModelState.IsValid)
             {
-                estudiantes.Add(estudiante);
-                return RedirectToAction("Lista");
+                ViewBag.Message = "El estudiante ha sido registrado.";
+                return View(model);
             }
-
-            return View("Index", estudiante);
+            return View(model);
         }
 
         public ActionResult Lista()
