@@ -46,6 +46,7 @@ namespace Actividad3LengPro3.Models
         [Display(Name = "Tipo de Ingreso")]
         public string TipoIngreso { get; set; }
 
+        [Display(Name = "Estado de Beca")]
         public bool EstaBecado { get; set; }
 
         [Range(0, 100, ErrorMessage = "Debe estar entre 0 y 100")]
